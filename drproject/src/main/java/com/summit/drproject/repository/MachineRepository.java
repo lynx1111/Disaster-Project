@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.summit.drproject.entity.Machine;
 
 @Repository
-public interface MachineRepository extends JpaRepository<Machine, Long> {
+public interface MachineRepository extends JpaRepository<Machine, String> {
 
 }
