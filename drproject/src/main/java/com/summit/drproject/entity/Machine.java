@@ -13,22 +13,23 @@ public class Machine {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	@Column(name = "sitecode")
+	private String id;
 	
 	@Column(name = "description")
 	private String description;
 	
 	@Column(name = "hourlyrate")
-	private String hourlyrate;
+	private int hourlyrate;
 	
 	@Column(name = "maxhourperday")
-	private String maxhourperday;
+	private double maxhourperday;
 	
 public Machine() {
 		
 	}
 	
-	public Machine(Long id, String description, String hourlyrate, String maxhourperday ) {
+	public Machine(String id, String description,  int hourlyrate, double maxhourperday ) {
 		super();
 		this.id=id;
 		this.description = description;
@@ -37,11 +38,11 @@ public Machine() {
 		
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -53,19 +54,19 @@ public Machine() {
 		this.description = description;
 	}
 
-	public String getHourlyrate() {
+	public int getHourlyrate() {
 		return hourlyrate;
 	}
 
-	public void setHourlyrate(String hourlyrate) {
+	public void setHourlyrate(int hourlyrate) {
 		this.hourlyrate = hourlyrate;
 	}
 
-	public String getMaxhourperday() {
+	public double getMaxhourperday() {
 		return maxhourperday;
 	}
 
-	public void setMaxhourperday(String maxhourperday) {
+	public void setMaxhourperday(double maxhourperday) {
 		this.maxhourperday = maxhourperday;
 	}
 }
