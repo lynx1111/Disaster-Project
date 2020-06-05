@@ -8,6 +8,6 @@ import com.summit.drproject.entity.Job;
 
 
 @Repository
-public interface JobRepository extends JpaRepository<Job, Long> {
+public interface JobRepository extends JpaRepository<Job, String> {
 
 }
