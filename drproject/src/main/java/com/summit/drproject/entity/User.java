@@ -10,6 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/*
+jenkins test
+*/
+
 @Entity
 @Table(name="user")
 public class User {
