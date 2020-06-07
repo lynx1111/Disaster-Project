@@ -27,18 +27,29 @@ public class UserService {
 			return userRepository.save(user);
 		}
 		
-		public ResponseEntity<User> getUser(Long id)throws ResourceNotFoundException {
-			User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Job not found for this site code :: " + id));
+		public ResponseEntity<User> getUser(String username)throws ResourceNotFoundException {
+			User user = userRepository.findById(username).orElseThrow(() -> new ResourceNotFoundException("Job not found for this site code :: " + username));
 			return ResponseEntity.ok().body(user);
 		}
 		
-		public Map<String, Boolean> delete(Long id) throws ResourceNotFoundException {
-			User currentUser = userRepository.findById(id)
-		        		.orElseThrow(() -> new ResourceNotFoundException("Tour not found for this site code :: " + id));
+		public Map<String, Boolean> delete(String username) throws ResourceNotFoundException {
+			User currentUser = userRepository.findById(username)
+		        		.orElseThrow(() -> new ResourceNotFoundException("Tour not found for this site code :: " + username));
 			 userRepository.delete(currentUser);
 		        Map<String, Boolean> response = new HashMap<>();
 				response.put("deleted", Boolean.TRUE);
 				return response;
 		}
-	
+	public boolean validateUser(String username, String password) {
+		User user = null;
+		try {
+			ResponseEntity<User> ruser = this.getUser(username);
+			user = ruser.getBody();
+		} catch (ResourceNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return username.equalsIgnoreCase(user.getUsername()) &&
+				password.equalsIgnoreCase(password);
+	}
 }

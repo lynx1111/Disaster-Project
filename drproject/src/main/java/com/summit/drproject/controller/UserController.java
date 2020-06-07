@@ -29,9 +29,9 @@ public class UserController {
 		return userService.getAllUsers();
 	}
 	
-	@RequestMapping(value ="/user/{id}",method = RequestMethod.GET)
-	public ResponseEntity<User> getUser(@PathVariable("id") Long id) throws ResourceNotFoundException{
-		return userService.getUser(id);
+	@RequestMapping(value ="/user/{username}",method = RequestMethod.GET)
+	public ResponseEntity<User> getUser(@PathVariable("username") String username) throws ResourceNotFoundException{
+		return userService.getUser(username);
 	}
 	
 	@RequestMapping(value ="/user/",method = RequestMethod.POST)
@@ -40,9 +40,9 @@ public class UserController {
 	}
 		
 	
-	@RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
-    public Map<String, Boolean> deleteUser(@PathVariable("id") Long id) throws ResourceNotFoundException{
-       return userService.delete(id);
+	@RequestMapping(value = "/user/{username}", method = RequestMethod.DELETE)
+    public Map<String, Boolean> deleteUser(@PathVariable("username") String username) throws ResourceNotFoundException{
+       return userService.delete(username);
     }
 	
 }

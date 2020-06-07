@@ -26,7 +26,6 @@ public class Job {
 	@Column(name = "maxhourperday")
 	private double maxhourperday;
 	
-	
 
 	
 	public Job() {
