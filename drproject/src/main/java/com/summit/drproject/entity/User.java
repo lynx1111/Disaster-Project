@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 /*
 jenkins test
-
+*/
 
 @Entity
 @Table(name="user")
