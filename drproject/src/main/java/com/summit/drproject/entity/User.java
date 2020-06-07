@@ -3,13 +3,13 @@ package com.summit.drproject.entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name="user")
@@ -27,7 +27,7 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
-	@ManyToOne(targetEntity = Job.class,cascade = CascadeType.ALL)
+	@ManyToOne(targetEntity = Job.class, cascade = CascadeType.ALL)
 	@JoinColumn(name ="sitecode",referencedColumnName = "sitecode")
 	private Job job;	
 	public String getName() {
