@@ -27,12 +27,12 @@ public class UserService {
 			return userRepository.save(user);
 		}
 		
-		public ResponseEntity<User> getUser(Long id)throws ResourceNotFoundException {
+		public ResponseEntity<User> getUser(String id)throws ResourceNotFoundException {
 			User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Job not found for this site code :: " + id));
 			return ResponseEntity.ok().body(user);
 		}
 		
-		public Map<String, Boolean> delete(Long id) throws ResourceNotFoundException {
+		public Map<String, Boolean> delete(String id) throws ResourceNotFoundException {
 			User currentUser = userRepository.findById(id)
 		        		.orElseThrow(() -> new ResourceNotFoundException("Tour not found for this site code :: " + id));
 			 userRepository.delete(currentUser);

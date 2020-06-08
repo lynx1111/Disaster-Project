@@ -30,7 +30,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value ="/user/{id}",method = RequestMethod.GET)
-	public ResponseEntity<User> getUser(@PathVariable("id") Long id) throws ResourceNotFoundException{
+	public ResponseEntity<User> getUser(@PathVariable("id") String id) throws ResourceNotFoundException{
 		return userService.getUser(id);
 	}
 	
@@ -41,7 +41,7 @@ public class UserController {
 		
 	
 	@RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
-    public Map<String, Boolean> deleteUser(@PathVariable("id") Long id) throws ResourceNotFoundException{
+    public Map<String, Boolean> deleteUser(@PathVariable("id") String id) throws ResourceNotFoundException{
        return userService.delete(id);
     }
 	

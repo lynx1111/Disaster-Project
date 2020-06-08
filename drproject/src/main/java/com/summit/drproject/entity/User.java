@@ -15,9 +15,7 @@ import javax.persistence.Table;
 @Table(name="user")
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	
+	//@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="name")
 	private String name;
 	
@@ -28,8 +26,9 @@ public class User {
 	private String password;
 	
 	@ManyToOne(targetEntity = Job.class, cascade = CascadeType.ALL)
-	@JoinColumn(name ="sitecode",referencedColumnName = "sitecode")
-	private Job job;	
+	@JoinColumn(name ="jobcode",referencedColumnName = "jobcode")
+	private Job job;
+	
 	public String getName() {
 		return name;
 	}

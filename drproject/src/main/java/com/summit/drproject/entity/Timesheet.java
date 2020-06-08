@@ -15,10 +15,10 @@ public class Timesheet {
 	@Column(name="name")
 	private String name;
 	
-	@Column(name="hours")
+	@Column(name="hourlyrate")
 	private int hours;
 	
-	@Column(name="totalpay")
+	@Column(name="maxhourperday")
 	private double totalpay;
 	
 	public Timesheet() {

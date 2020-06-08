@@ -13,7 +13,7 @@ public class Machine {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "sitecode")
+	@Column(name = "machinecode")
 	private String id;
 	
 	@Column(name = "description")
