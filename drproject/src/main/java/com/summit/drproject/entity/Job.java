@@ -14,7 +14,7 @@ public class Job {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "sitecode")
+	@Column(name = "jobcode")
 	private String id;
 	
 	@Column(name = "description")

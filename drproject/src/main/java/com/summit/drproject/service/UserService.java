@@ -50,6 +50,6 @@ public class UserService {
 			e.printStackTrace();
 		}
 		return username.equalsIgnoreCase(user.getUsername()) &&
-				password.equalsIgnoreCase(password);
+				password.equalsIgnoreCase(user.getPassword());
 	}
 }

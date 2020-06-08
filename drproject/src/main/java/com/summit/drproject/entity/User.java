@@ -24,7 +24,7 @@ public class User {
 	private String password;
 	
 	@ManyToOne(targetEntity = Job.class,cascade = CascadeType.ALL)
-	@JoinColumn(name ="sitecode",referencedColumnName = "sitecode")
+	@JoinColumn(name ="jobcode",referencedColumnName = "jobcode")
 	private Job job;	
 	public String getName() {
 		return name;
