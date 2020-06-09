@@ -31,6 +31,7 @@ public class JobController {
 	
 	@RequestMapping(value = "/jobs",method = RequestMethod.GET)
 	public String getJobs(ModelMap model){
+		System.out.println("In job controller");
 		List<Job> jobs = jobService.getAllJobs();
 		model.put("jobs", jobs);
 		return "jobs";
@@ -56,7 +57,18 @@ public class JobController {
 		jobService.create(job);
 		return "jobs";
 	}
-	
+	@RequestMapping(value="/delete_job", method=RequestMethod.GET)
+	public String deleteJob(@RequestParam(value="id") String id, ModelMap model) {
+		try {
+			jobService.delete(id);
+			List<Job> jobs = jobService.getAllJobs();
+			model.put("jobs", jobs);
+		} catch (ResourceNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "jobs";
+	}
 	@RequestMapping(value ="/job/{id}",method = RequestMethod.GET)
 	public ResponseEntity<Job> getJob(@PathVariable("id") String id) throws ResourceNotFoundException{
 		return jobService.getJob(id);
@@ -67,10 +79,5 @@ public class JobController {
 		return jobService.create(job);
 	}
 		
-	
-	@RequestMapping(value = "/job/{id}", method = RequestMethod.DELETE)
-    public Map<String, Boolean> deleteJob(@PathVariable("id") String id) throws ResourceNotFoundException{
-       return jobService.delete(id);
-    }
 	
 }

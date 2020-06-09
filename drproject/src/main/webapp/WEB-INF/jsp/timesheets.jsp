@@ -26,7 +26,7 @@ Timesheets:
 		</tr>
 	</c:forEach>
 </table>
-<form action="/">
+<form action="/home">
 	<input type="submit" value="Homepage"/>
 </form>
 </body>

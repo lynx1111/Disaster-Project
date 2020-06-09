@@ -23,10 +23,12 @@ List of Machines:
 			<td>${machine.description}</td>
 			<td>${machine.hourlyrate}</td>
 			<td>${machine.maxhourperday}</td>
+			<td><a href="/update_machine?id=<c:out value='${machine.id}'/>">Edit</a></td>
+			<td><a href="/delete_machine?id=<c:out value='${machine.id}'/>">Delete</a></td>
 		</tr>
 	</c:forEach>
 </table>
-<form action="/">
+<form action="/home">
 	<input type="submit" value="Homepage"/>
 </form>
 </body>

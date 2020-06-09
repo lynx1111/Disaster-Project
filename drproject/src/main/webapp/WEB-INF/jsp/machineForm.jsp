@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Job Form</title>
+<title>Machine Form</title>
 </head>
 <body>
-<h1>Job Management</h1>
-<c:if test="${job==null}">
+<h1>Machine Management</h1>
+<c:if test="${machine==null}">
 	<table>
 		<tr>
-			<th>Job name: </th>
+			<th>MAchine code: </th>
 			<td>
 				<input type="text" name="id"/>
 			</td>
@@ -43,45 +43,45 @@
 		</tr>
 	</table>
 </c:if>
-<c:if test="${job!=null}">
+<c:if test="${machine!=null}">
 	<table>
 		<tr>
-			<th>Job name: </th>
+			<th>Machine name: </th>
 			<td>
-				${job.id}
-				<input type="hidden" name="id" value="${job.id}"/>
+				${machine.id}
+				<input type="hidden" name="id" value="${machine.id}"/>
 			</td>
 		</tr>
 		<tr>
 			<th>Description: </th>
 			<td>
-				<input type="text" name="description" value="${job.description}"/>
+				<input type="text" name="description" value="${machine.description}"/>
 			</td>
 		</tr>
 		<tr>
 			<th>Hourly Rate: </th>
 			<td>
-				<input type="text" name="rate" value="${job.hourlyrate}"/>
+				<input type="text" name="rate" value="${machine.hourlyrate}"/>
 			</td>
 		</tr>
 		<tr>
 			<th>Max Hour per day: </th>
 			<td>
-				<input type="text" name="maxHour" value="${job.maxhourperday}"/>
+				<input type="text" name="maxHour" value="${machine.maxhourperday}"/>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<form action="/after_update_job" method="post">
+				<form action="/after_update_machine" method="post">
 					<input type="submit" value="Save" />
 				</form>
 			</td>
 		</tr>
 	</table>
 </c:if>
-<c:if test="${job!=null}">
-	<form action="/jobs">
-		<input type="submit" value="Go back to Jobs"/>
+<c:if test="${machine!=null}">
+	<form action="/machines">
+		<input type="submit" value="Go back to Machines"/>
 	</form>
 </c:if>
 <br>

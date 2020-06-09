@@ -21,12 +21,13 @@ public class ViewController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String showLoginPage() {
+		System.out.println("login page");
 		return "login";
 	}
 	
 	
 	 @RequestMapping(value="/", method = RequestMethod.POST)
-	    public ModelAndView showWelcomePage(ModelMap model, @RequestParam String username, @RequestParam String password){
+	 public ModelAndView showWelcomePage(ModelMap model, @RequestParam String username, @RequestParam String password){
 		 	System.out.println("Hi");
 	        boolean isValidUser = service.validateUser(username, password);
 	        System.out.println(isValidUser);
@@ -38,9 +39,10 @@ public class ViewController {
 	        model.put("username", username);
 
 	        return new ModelAndView("redirect:/home", model);
-	    }
+	 }
 	 @RequestMapping(value = "/home", method = RequestMethod.GET)
 		public String showHomePage() {
+		 System.out.println("going to home page");
 			return "home";
 		}
 
