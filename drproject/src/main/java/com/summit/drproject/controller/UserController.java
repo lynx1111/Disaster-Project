@@ -27,7 +27,6 @@ public class UserController {
 	public List<User> getUsers(){
 		return userService.getAllUsers();
 	}
-	
 	@RequestMapping(value ="/user/{username}",method = RequestMethod.GET)
 	public ResponseEntity<User> getUser(@PathVariable("username") String username) throws ResourceNotFoundException{
 		return userService.getUser(username);

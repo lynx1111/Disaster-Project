@@ -23,8 +23,13 @@ List of Jobs:
 			<td>${job.description}</td>
 			<td>${job.hourlyrate}</td>
 			<td>${job.maxhourperday}</td>
+			<td><a href="/update_job?id=<c:out value='${job.id}'/>">Edit</a></td>
+			<td><a href="/delete_job?id=<c:out value='${job.id}'/>">Delete</a></td>
 		</tr>
 	</c:forEach>
 </table>
+<form action="/">
+	<input type="submit" value="Homepage"/>
+</form>
 </body>
 </html>

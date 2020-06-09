@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -32,6 +33,27 @@ public class JobController {
 	public String getJobs(ModelMap model){
 		List<Job> jobs = jobService.getAllJobs();
 		model.put("jobs", jobs);
+		return "jobs";
+	}
+	
+	@RequestMapping(value="/update_job", method = RequestMethod.GET)
+	public String updateJob(@RequestParam(value="id") String id , ModelMap model) {
+		Job job = null;
+		try {
+			ResponseEntity<Job> rJob = jobService.getJob(id);
+			job = rJob.getBody();
+			model.put("job", job);
+		} catch (ResourceNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "jobForm";
+	}
+	//ASk Maruthi about this. Giving null pointer as well as redirecting 
+	@RequestMapping(value="/after_update_job", method = RequestMethod.GET)
+	public String showUpdateJob(@RequestParam(value="id",required=false) String id , @RequestParam(value="description",required=false) String description,@RequestParam(value="rate",required=false) Integer rate,@RequestParam(value="maxHour",required=false) Double maxHour) {
+		Job job = new Job(id, description, rate.intValue(), maxHour.doubleValue());
+		jobService.create(job);
 		return "jobs";
 	}
 	

@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,16 +19,16 @@ import com.summit.drproject.exception.ResourceNotFoundException;
 
 import com.summit.drproject.service.TimesheetService;
 
-@RestController
+@Controller
 public class TimesheetController {
 	@Autowired
 	TimesheetService timesheetService;
 	
-
-	
 	@RequestMapping(value = "/timesheets",method = RequestMethod.GET)
-	public List<Timesheet> getTimesheets(){
-		return timesheetService.getAllTimesheets();
+	public String getTimesheets(ModelMap model){
+		List<Timesheet> timesheets= timesheetService.getAllTimesheets();
+		model.put("timesheets", timesheets);
+		return "timesheets";
 	}
 	
 	@RequestMapping(value ="/timesheet/{id}",method = RequestMethod.GET)
