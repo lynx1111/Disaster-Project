@@ -72,7 +72,7 @@
 		</tr>
 		<tr>
 			<td>
-				<form action="/after_update_job">
+				<form action="/after_update_job" method="post">
 					<input type="submit" value="Save" />
 				</form>
 			</td>

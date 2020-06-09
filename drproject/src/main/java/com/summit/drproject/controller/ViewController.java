@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.summit.drproject.service.UserService;
 
 @Controller
-//@SessionAttributes("username")
 public class ViewController {
 	
 	@Autowired
@@ -21,25 +21,27 @@ public class ViewController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String showLoginPage() {
-		return "home";
+		return "login";
 	}
 	
 	
 	 @RequestMapping(value="/", method = RequestMethod.POST)
-	    public String showWelcomePage(ModelMap model, @RequestParam String username, @RequestParam String password){
+	    public ModelAndView showWelcomePage(ModelMap model, @RequestParam String username, @RequestParam String password){
 		 	System.out.println("Hi");
 	        boolean isValidUser = service.validateUser(username, password);
 	        System.out.println(isValidUser);
-
 	        if (!isValidUser) {
 	            model.put("errorMessage", "Invalid Credentials");
-	            return "login";
+	            return new ModelAndView("redirect:/", model);
 	        }
 
 	        model.put("username", username);
-	        model.put("password", password);
 
-	        return "home";
+	        return new ModelAndView("redirect:/home", model);
 	    }
+	 @RequestMapping(value = "/home", method = RequestMethod.GET)
+		public String showHomePage() {
+			return "home";
+		}
 
 }

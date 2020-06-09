@@ -6,11 +6,11 @@
 
 <body>
     <font color="red">${errorMessage}</font>
-    <form method="post">
+    <form action="/" method="post">
         Username : <input type="text" name="username" />
         <br>
         Password : <input type="password" name="password" /> 
-        <input type="submit" />
+        <input type="submit" />	  
     </form>
 </body>
 
