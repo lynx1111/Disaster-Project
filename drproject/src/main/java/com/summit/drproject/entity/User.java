@@ -23,7 +23,7 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
-	@ManyToOne(targetEntity = Job.class,cascade = CascadeType.ALL)
+	@ManyToOne(targetEntity = Job.class)
 	@JoinColumn(name ="jobcode",referencedColumnName = "jobcode")
 	private Job job;	
 	public String getName() {

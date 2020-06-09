@@ -21,7 +21,7 @@ public class ViewController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String showLoginPage() {
-		return "login";
+		return "home";
 	}
 	
 	

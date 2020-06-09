@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +20,7 @@ import com.summit.drproject.service.JobService;
 
 
 
-@RestController
+@Controller
 public class JobController {
 
 	@Autowired
@@ -27,8 +29,10 @@ public class JobController {
 
 	
 	@RequestMapping(value = "/jobs",method = RequestMethod.GET)
-	public List<Job> getJobs(){
-		return jobService.getAllJobs();
+	public String getJobs(ModelMap model){
+		List<Job> jobs = jobService.getAllJobs();
+		model.put("jobs", jobs);
+		return "jobs";
 	}
 	
 	@RequestMapping(value ="/job/{id}",method = RequestMethod.GET)

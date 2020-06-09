@@ -29,7 +29,7 @@
 			<ul>
 				<li><a href="/jobs">Job code Management</a></li>
 				<li><a href="/machines">Machine Management</a></li>
-				<li><a href="/users">Timecard Approval</li>
+				<li><a href="/timesheets">Timecard Approval</a></li>
 			</ul>
 		</td>
 	</tr>
