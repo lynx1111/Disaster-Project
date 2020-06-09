@@ -16,6 +16,9 @@ import javax.persistence.Table;
 public class User {
 	@Id
 	//@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="username")
+	private String username;
+	
 	@Column(name="name")
 	private String name;
 	
@@ -25,10 +28,18 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
-	@ManyToOne(targetEntity = Job.class, cascade = CascadeType.ALL)
+	@ManyToOne(targetEntity = Job.class)
 	@JoinColumn(name ="jobcode",referencedColumnName = "jobcode")
 	private Job job;
 	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -38,8 +49,9 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String name, boolean role, String password , Job job) {
+	public User(String username, String name, boolean role, String password , Job job) {
 		super();
+		this.username = username;
 		this.name = name;
 		this.role = role;
 		this.job = job;
