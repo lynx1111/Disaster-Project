@@ -27,10 +27,9 @@ import com.summit.drproject.exception.ResourceNotFoundException;
 import com.summit.drproject.service.JobService;
 
 
-
 @Controller
 public class JobController {
-
+	
 	@Autowired
 	JobService jobService;
 	

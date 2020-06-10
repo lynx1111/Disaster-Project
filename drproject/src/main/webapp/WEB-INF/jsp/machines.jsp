@@ -10,20 +10,26 @@
 	height:100%;
 	}
 	.add{
-	float:left;
+	float:center;
+	font-size: 24px;
+	}
+	th, td{
+	font-size: 24px
 	}
 </style>
 </head>
 <body>
 
-List of Machines:
+<font size="30">List of Machines:</font>
+<br>
 <br>
 <div class="add">
 	<a href="/create_machine">Add new machine</a>
 </div>
 <br>
+<br>
 <table>
-	<tr>
+	<tr bgcolor="black" style="color:white"> 
 		<th>Machine code</th>
 		<th>Description</th>
 		<th>Hourly Rate</th>

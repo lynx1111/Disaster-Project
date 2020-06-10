@@ -7,13 +7,18 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Jobs</title>
+<title>Timesheets</title>
+<style>
+	th, td{
+	font-size: 24px
+	}
+</style>
 </head>
 <body>
-Timesheets:
+<font size="30">Timesheets:</font>
 <br>
 <table>
-	<tr>
+	<tr bgcolor="black" style="color:white">
 		<th>Site code</th>
 		<th>Name</th>
 		<th>Hours</th>

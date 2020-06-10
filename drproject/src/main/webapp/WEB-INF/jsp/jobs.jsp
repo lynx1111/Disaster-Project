@@ -11,20 +11,24 @@
 	height:100%;
 	}
 	.add{
-	float:left;
+	float:center;
+	font-size: 24px;
+	}
+	th, td{
+	font-size: 24px;
 	}
 </style>
 </head>
 <body>
 
-<h2>List of Jobs:</h2>
+<font size="30">List of Jobs:</font>
 <br>
 <div class="add">
 	<a href="/create">Add new job</a>
 </div>
 <br>
 <table>
-	<tr>
+	<tr bgcolor="black" style="color:white">
 		<th>Job code</th>
 		<th>Description</th>
 		<th>Hourly Rate</th>
