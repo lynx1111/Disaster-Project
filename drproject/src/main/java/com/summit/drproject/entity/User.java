@@ -10,26 +10,32 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="user")
 public class User {
 	@Id
-	
+	@NotBlank
 	@Column(name="username")
 	private String username;
 	
 	@Column(name="name")
+	@NotBlank
 	private String name;
 	
+	@NotBlank
 	@Column(name="role")
 	private String role;
 	
+	@NotBlank
 	@Column(name="password")
 	private String password;
 	
-	@ManyToOne(targetEntity = Job.class)
-	@JoinColumn(name ="jobcode",referencedColumnName = "jobcode")
+	//@ManyToOne(targetEntity = Job.class)
+	//@JoinColumn(name ="jobcode",referencedColumnName = "jobcode")
+	@Transient
 	private Job job;
 	
 	public String getUsername() {
