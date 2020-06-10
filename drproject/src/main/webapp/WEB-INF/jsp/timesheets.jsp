@@ -1,5 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +10,6 @@
 <title>Jobs</title>
 </head>
 <body>
-
 Timesheets:
 <br>
 <table>
@@ -23,6 +25,12 @@ Timesheets:
 			<td>${timesheet.name}</td>
 			<td>${timesheet.hours}</td>
 			<td>${timesheet.totalpay}</td>
+			<c:if test="${status==false}">
+				<a href="/review/${timesheet.id}">Review</a>
+			</c:if>
+			<c:if test="${status==true}">
+				Finalized
+			</c:if>
 		</tr>
 	</c:forEach>
 </table>

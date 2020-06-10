@@ -4,10 +4,17 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,8 +34,6 @@ public class JobController {
 	@Autowired
 	JobService jobService;
 	
-
-	
 	@RequestMapping(value = "/jobs",method = RequestMethod.GET)
 	public String getJobs(ModelMap model){
 		System.out.println("In job controller");
@@ -36,9 +41,8 @@ public class JobController {
 		model.put("jobs", jobs);
 		return "jobs";
 	}
-	
-	@RequestMapping(value="/update_job", method = RequestMethod.GET)
-	public String updateJob(@RequestParam(value="id") String id , ModelMap model) {
+	@GetMapping("/edit_job/{id}")
+	public String updateJob(@PathVariable String id , ModelMap model) {
 		Job job = null;
 		try {
 			ResponseEntity<Job> rJob = jobService.getJob(id);
@@ -48,15 +52,26 @@ public class JobController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "jobForm";
+		return "editJob";
 	}
-	//ASk Maruthi about this. Giving null pointer as well as redirecting 
-	@RequestMapping(value="/after_update_job", method = RequestMethod.GET)
-	public String showUpdateJob(@RequestParam(value="id",required=false) String id , @RequestParam(value="description",required=false) String description,@RequestParam(value="rate",required=false) Integer rate,@RequestParam(value="maxHour",required=false) Double maxHour) {
-		Job job = new Job(id, description, rate.intValue(), maxHour.doubleValue());
-		jobService.create(job);
+	
+	@PostMapping("/update_job/{id}")
+	public String showUpdateJob(@PathVariable String id, @Validated @ModelAttribute Job job, BindingResult result, Model model ) {
+		System.out.println("update_job");
+		if (result.hasErrors()) {
+            return "editJob";
+        }
+		try {
+			jobService.getJob(id);
+			jobService.create(job);
+			model.addAttribute("jobs", jobService.getAllJobs());
+		} catch (ResourceNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "jobs";
 	}
+	
 	@RequestMapping(value="/delete_job", method=RequestMethod.GET)
 	public String deleteJob(@RequestParam(value="id") String id, ModelMap model) {
 		try {
@@ -69,15 +84,22 @@ public class JobController {
 		}
 		return "jobs";
 	}
-	@RequestMapping(value ="/job/{id}",method = RequestMethod.GET)
-	public ResponseEntity<Job> getJob(@PathVariable("id") String id) throws ResourceNotFoundException{
-		return jobService.getJob(id);
+	@GetMapping(value="/create")
+	public String addJob(Model model) {
+		model.addAttribute("job", new Job());
+		System.out.println("Creating the job v1");
+		return "jobForm";
 	}
 	
-	@RequestMapping(value ="/job/",method = RequestMethod.POST)
-	public Job insert(@RequestBody Job job) {
-		return jobService.create(job);
+	@PostMapping(value="/add", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	public String showAddedJob(@Validated @ModelAttribute Job job, BindingResult result, Model model) {
+		System.out.println("Creating the job v24324324");
+		if(result.hasErrors()) {
+			return "jobForm";
+		}
+		jobService.create(job);
+		model.addAttribute("jobs", jobService.getAllJobs());
+		return "jobs";
 	}
-		
 	
 }

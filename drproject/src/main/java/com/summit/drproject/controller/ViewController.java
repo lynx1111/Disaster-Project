@@ -25,7 +25,6 @@ public class ViewController {
 		return "login";
 	}
 	
-	
 	 @RequestMapping(value="/", method = RequestMethod.POST)
 	 public ModelAndView showWelcomePage(ModelMap model, @RequestParam String username, @RequestParam String password){
 		 	System.out.println("Hi");

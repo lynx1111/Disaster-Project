@@ -2,6 +2,8 @@ package com.summit.drproject.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,6 +11,10 @@ import javax.persistence.Table;
 @Table(name="timesheet")
 public class Timesheet {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id")
+	private int id;
+	
 	@Column(name="sitecode")
 	private String siteCode;
 	
@@ -21,8 +27,12 @@ public class Timesheet {
 	@Column(name="maxhourperday")
 	private double totalpay;
 	
+	@Column(name="status")
+	private boolean status;
+	
 	public Timesheet() {
 		super();
+		this.status=false;
 		// TODO Auto-generated constructor stub
 	}
 	public Timesheet(String siteCode, String name, int hours, double totalpay) {
@@ -31,6 +41,20 @@ public class Timesheet {
 		this.name = name;
 		this.hours = hours;
 		this.totalpay = totalpay;
+		this.status = false;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 	public String getSiteCode() {
 		return siteCode;

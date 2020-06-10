@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,82 +11,51 @@
 </head>
 <body>
 <h1>Machine Management</h1>
-<c:if test="${machine==null}">
+<form:form action="/add_machine" modelAttribute="machine" method="post">
 	<table>
 		<tr>
-			<th>MAchine code: </th>
+			<th>Machine code: </th>
 			<td>
-				<input type="text" name="id"/>
+				<form:label path="id"></form:label>
+				<form:input type="text" id="id" path="id"/>
+				<form:errors path="id"/>
 			</td>
 		</tr>
 		<tr>
 			<th>Description: </th>
 			<td>
-				<input type="text" name="description"/>
+				<form:label path="description"></form:label>
+				<form:input type="text" id="description" path="description"/>
+				<form:errors path="description"/>
 			</td>
 		</tr>
 		<tr>
 			<th>Hourly Rate: </th>
 			<td>
-				<input type="text" name="rate"/>
+				<form:label path="hourlyrate"></form:label>
+				<form:input type="text" id="hourlyrate" path="hourlyrate" />
+				<form:errors path="hourlyrate"/>
 			</td>
 		</tr>
 		<tr>
 			<th>Max Hour per day: </th>
 			<td>
-				<input type="text" name="maxHour"/>
+				<form:label path="maxhourperday"></form:label>
+				<form:input type="text" id="maxhourperday" path="maxhourperday"/>
+				<form:errors path="maxhourperday"/>
 			</td>
 		</tr>
 		<tr>
-			<th>Max Hour per day: </th>
 			<td>
-				<input type="submit" value="Save" />
+					<input type="submit" value="Save" />	
 			</td>
 		</tr>
 	</table>
-</c:if>
-<c:if test="${machine!=null}">
-	<table>
-		<tr>
-			<th>Machine name: </th>
-			<td>
-				${machine.id}
-				<input type="hidden" name="id" value="${machine.id}"/>
-			</td>
-		</tr>
-		<tr>
-			<th>Description: </th>
-			<td>
-				<input type="text" name="description" value="${machine.description}"/>
-			</td>
-		</tr>
-		<tr>
-			<th>Hourly Rate: </th>
-			<td>
-				<input type="text" name="rate" value="${machine.hourlyrate}"/>
-			</td>
-		</tr>
-		<tr>
-			<th>Max Hour per day: </th>
-			<td>
-				<input type="text" name="maxHour" value="${machine.maxhourperday}"/>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<form action="/after_update_machine" method="post">
-					<input type="submit" value="Save" />
-				</form>
-			</td>
-		</tr>
-	</table>
-</c:if>
-<c:if test="${machine!=null}">
-	<form action="/machines">
-		<input type="submit" value="Go back to Machines"/>
-	</form>
-</c:if>
-<br>
+	</form:form>
+<form action="/machines">
+	<input type="submit" value="Go back to Machines"/>
+</form>
+
 <form action="/home">
 	<input type="submit" value="Homepage"/>
 </form>

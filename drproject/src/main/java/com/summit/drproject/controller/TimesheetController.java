@@ -6,7 +6,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,16 +28,26 @@ public class TimesheetController {
 	TimesheetService timesheetService;
 	
 	@RequestMapping(value = "/timesheets",method = RequestMethod.GET)
-	public String getJobs(ModelMap model){
-		System.out.println("In job controller");
+	public String getTimesheets(ModelMap model){
+		timesheetService.create(new Timesheet("PA-121","Jason Chen", 80,4000.0));
 		List<Timesheet> timesheets = timesheetService.getAllTimesheets();
 		model.put("timesheets", timesheets);
 		return "timesheets";
 	}
 	
-	@RequestMapping(value ="/timesheet/",method = RequestMethod.POST)
-	public Timesheet insert(@RequestBody Timesheet timesheet) {
-		return timesheetService.create(timesheet);
+	@GetMapping(value="/review/{id}")
+	public String reviewTimesheets(@PathVariable int id, Model model) {
+		Timesheet timesheet = null;
+		try {
+			ResponseEntity<Timesheet> rTimesheet=timesheetService.getTimesheet(id);
+			timesheet=rTimesheet.getBody();
+			model.addAttribute("timesheet", timesheet);
+		} catch (ResourceNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "reviewTimesheet";
 	}
+	
 
 }
