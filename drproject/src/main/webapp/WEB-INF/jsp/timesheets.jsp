@@ -30,10 +30,11 @@
 			<td>${timesheet.name}</td>
 			<td>${timesheet.hours}</td>
 			<td>${timesheet.totalpay}</td>
-			<c:if test="${status==false}">
+			<td>
+			<c:if test="${timesheet.status eq false}">
 				<a href="/review/${timesheet.id}">Review</a>
 			</c:if>
-			<c:if test="${status==true}">
+			<c:if test="${timesheet.status eq true}">
 				Finalized
 			</c:if>
 		</tr>

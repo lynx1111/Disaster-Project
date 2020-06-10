@@ -10,6 +10,7 @@
 </head>
 
 <body>
+	<font color="green">${success}</font>
     <font color="red">${errorMessage}</font>
     <form:form action="/${user.username}/${user.password}" method="post" modelAttribute="user">
         Username :

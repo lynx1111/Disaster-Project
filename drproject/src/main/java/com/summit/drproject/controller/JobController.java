@@ -3,6 +3,8 @@ package com.summit.drproject.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -55,8 +57,7 @@ public class JobController {
 	}
 	
 	@PostMapping("/update_job/{id}")
-	public String showUpdateJob(@PathVariable String id, @Validated @ModelAttribute Job job, BindingResult result, Model model ) {
-		System.out.println("update_job");
+	public String showUpdateJob(@PathVariable String id, @Validated @ModelAttribute Job job, BindingResult result, Model model  ) {
 		if (result.hasErrors()) {
             return "editJob";
         }

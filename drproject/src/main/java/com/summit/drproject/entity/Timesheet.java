@@ -1,17 +1,21 @@
 package com.summit.drproject.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="timesheet")
 public class Timesheet {
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
@@ -30,6 +34,11 @@ public class Timesheet {
 	@Column(name="status")
 	private boolean status;
 	
+	@Transient
+	private List<String> statusOptions;
+	
+	@Transient
+	private String s;
 	public Timesheet() {
 		super();
 		this.status=false;
@@ -44,6 +53,12 @@ public class Timesheet {
 		this.status = false;
 	}
 	
+	public String getS() {
+		return s;
+	}
+	public void setS(String s) {
+		this.s = s;
+	}
 	public int getId() {
 		return id;
 	}
@@ -79,6 +94,12 @@ public class Timesheet {
 	}
 	public void setTotalpay(double totalpay) {
 		this.totalpay = totalpay;
+	}
+	public List<String> getStatusOptions() {
+		return statusOptions;
+	}
+	public void setStatusOptions(List<String> statusOptions) {
+		this.statusOptions = statusOptions;
 	}
 	
 }

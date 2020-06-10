@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,11 +26,14 @@ public class ViewController {
 	UserService service;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String showLoginPage(Model model) {
-		model.addAttribute("name", "candy");
-		return "home";
+	public String showWelcomePage(Model model) {
+		return "welcome";
 	}
 	
+	@GetMapping(value="/login")
+	public String showLoginPage(Model model) {
+		return "login";
+	}
 	 @PostMapping(value="/{username}/{password}")
 	 public String showWelcomePage(ModelMap model, @PathVariable String username, @PathVariable String password){
 	        boolean isValidUser = service.validateUser(username, password);
@@ -47,9 +51,9 @@ public class ViewController {
 	        return "home";
 	 }
 	 @RequestMapping(value = "/home", method = RequestMethod.GET)
-		public String showHomePage() {
-		 System.out.println("going to home page");
-			return "home";
+		public String showHomePage(Model model) {
+		 	
+		 	return "home";
 		}
 
 }

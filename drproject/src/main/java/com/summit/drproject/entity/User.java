@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="user")
@@ -18,13 +19,14 @@ public class User {
 	private String name;
 	
 	@Column(name="role")
-	private boolean role;
+	private String role;
 	
 	@Column(name="password")
 	private String password;
 	
-	@ManyToOne(targetEntity = Job.class)
-	@JoinColumn(name ="jobcode",referencedColumnName = "jobcode")
+//	@ManyToOne(targetEntity = Job.class)
+//	@JoinColumn(name ="jobcode",referencedColumnName = "jobcode")
+	@Transient
 	private Job job;	
 	public String getName() {
 		return name;
@@ -35,7 +37,7 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String username, String name, boolean role, String password , Job job) {
+	public User(String username, String name, String role, String password , Job job) {
 		super();
 		this.username = username;
 		this.name = name;
@@ -54,10 +56,10 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public boolean isRole() {
+	public String getRole() {
 		return role;
 	}
-	public void setRole(boolean role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 	public Job getJob() {
