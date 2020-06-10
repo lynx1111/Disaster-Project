@@ -8,10 +8,10 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping
 public class ViewController {
 
-	/*@RequestMapping("/login")
+	@RequestMapping("/login")
 	public ModelAndView login() {
 		return new ModelAndView("login");
-	}*/
+	}
 
 	@RequestMapping("/userDashboard")
 	public ModelAndView userDashboard() {
