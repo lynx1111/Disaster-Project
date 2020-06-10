@@ -30,7 +30,7 @@ public class TimesheetController {
 	}
 	
 	@RequestMapping(value ="/timesheet/{id}",method = RequestMethod.GET)
-	public ResponseEntity<Timesheet> getTimesheet(@PathVariable("id") String id) throws ResourceNotFoundException{
+	public ResponseEntity<Timesheet> getTimesheet(@PathVariable("id") Integer id) throws ResourceNotFoundException{
 		return timesheetService.getTimesheet(id);
 	}
 	
@@ -41,7 +41,7 @@ public class TimesheetController {
 		
 	
 	@RequestMapping(value = "/timesheet/{id}", method = RequestMethod.DELETE)
-    public Map<String, Boolean> deleteTimesheet(@PathVariable("id") String id) throws ResourceNotFoundException{
+    public Map<String, Boolean> deleteTimesheet(@PathVariable("id") Integer id) throws ResourceNotFoundException{
        return timesheetService.delete(id);
     }
 }

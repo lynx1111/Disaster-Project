@@ -28,12 +28,12 @@ public class TimesheetService {
 			return timesheetRepository.save(timesheet);
 		}
 		
-		public ResponseEntity<Timesheet> getTimesheet(String id)throws ResourceNotFoundException {
+		public ResponseEntity<Timesheet> getTimesheet(Integer id)throws ResourceNotFoundException {
 			Timesheet timesheet = timesheetRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Job not found for this site code :: " + id));
 			return ResponseEntity.ok().body(timesheet);
 		}
 		
-		public Map<String, Boolean> delete(String id) throws ResourceNotFoundException {
+		public Map<String, Boolean> delete(Integer id) throws ResourceNotFoundException {
 			Timesheet currentTimesheet = timesheetRepository.findById(id)
 		        		.orElseThrow(() -> new ResourceNotFoundException("Tour not found for this site code :: " + id));
 			 timesheetRepository.delete(currentTimesheet);
