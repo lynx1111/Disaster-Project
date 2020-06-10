@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -24,11 +25,18 @@ public class UserService {
 	    }
 	 
 	 public User create(User user) {
+		 BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		 String pw = user.getPassword();
+			String epw= encoder.encode(pw);
+			user.setPassword(epw);
 			return userRepository.save(user);
 		}
 		
 		public ResponseEntity<User> getUser(String id)throws ResourceNotFoundException {
+			
+				
 			User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Job not found for this site code :: " + id));
+			
 			return ResponseEntity.ok().body(user);
 		}
 		

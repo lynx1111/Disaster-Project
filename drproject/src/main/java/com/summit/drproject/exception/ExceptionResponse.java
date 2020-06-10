@@ -25,3 +25,5 @@ public String getDetails()
 return details;
 }
 }
+
+// validations in spring forms

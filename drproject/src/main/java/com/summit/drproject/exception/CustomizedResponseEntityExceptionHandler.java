@@ -1,4 +1,5 @@
 package com.summit.drproject.exception;
+
 import java.util.Date;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -11,34 +12,35 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 
-//defining exception handling for all the exceptions 
 @ControllerAdvice
 @RestController
-public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler
-{
-@ExceptionHandler(Exception.class)
-//override method of ResponseEntityExceptionHandler class
-public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request)
-{
-//creating exception response structure
-ExceptionResponse exceptionResponse= new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
-//returning exception structure and specific status 
-return new ResponseEntity(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
-}
-@ExceptionHandler(ResourceNotFoundException.class)
-//override method of ResponseEntityExceptionHandler class
-public final ResponseEntity<Object> handleUserNotFoundExceptions(ResourceNotFoundException ex, WebRequest request)
-{
-//creating exception response structure
-ExceptionResponse exceptionResponse= new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
-//returning exception structure and specific status 
-return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
-}
-@Override
-protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) 
-{
-ExceptionResponse exceptionResponse= new ExceptionResponse(new Date(), "Validation Failed", ex.getBindingResult().toString());
-//returning exception structure and specific status 
-return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
-}
+public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
+	@ExceptionHandler(Exception.class)
+
+	public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
+
+		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
+				request.getDescription(false));
+
+		return new ResponseEntity(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	@ExceptionHandler(ResourceNotFoundException.class)
+
+	public final ResponseEntity<Object> handleUserNotFoundExceptions(ResourceNotFoundException ex, WebRequest request) {
+
+		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
+				request.getDescription(false));
+
+		return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
+	}
+
+	@Override
+	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+			HttpHeaders headers, HttpStatus status, WebRequest request) {
+		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), "Validation Failed",
+				ex.getBindingResult().toString());
+
+		return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
+	}
 }
