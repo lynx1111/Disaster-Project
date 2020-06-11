@@ -3,20 +3,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 <title>Login page</title>
 <style>
 	body{
 	text-align: center;
+	font-size:30px;
 	}
 </style>
 </head>
 
 <body>
 	<font color="green">${success}</font>
-    <font color="red">${errorMessage}</font>
+	<font color="red">${errorMessage }</font>
     <form:form action="/login" method="POST" modelAttribute="user">
         Username :
 				<form:label path="username"></form:label>
@@ -28,8 +29,11 @@
 				<form:input type="password" id="password" path="password"/>
 				<form:errors path="password"/>
 				<br>
-        <input type="submit" />	  
+        <input type="submit" value="Login"/>	  
     </form:form>
+    <form action="/register">
+	<input type="submit" value="Go to Registration page"/>
+	</form>
 </body>
 
 </html>

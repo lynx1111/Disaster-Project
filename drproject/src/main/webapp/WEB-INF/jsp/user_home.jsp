@@ -15,10 +15,19 @@
 	body{
 	text-align: center;
 	}
+	table{
+	margin-left:auto; 
+    margin-right:auto;
+	}
 </style>
 </head>
 <body>
 <font class="time" size="30">Timesheet Submission</font>
+<h2>Hi ${name}</h2>
+<form action="/logout">
+	<input type="submit" value="Sign out"/>
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
+</form>
 <br>
 <div class="add">
 	<a href="/create_ts">Add new timesheet</a>

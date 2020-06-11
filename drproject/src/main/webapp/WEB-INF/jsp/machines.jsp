@@ -17,6 +17,10 @@
 	th, td{
 	font-size: 24px
 	}
+	table{
+	margin-left:auto; 
+    margin-right:auto;
+	}
 </style>
 </head>
 <body>

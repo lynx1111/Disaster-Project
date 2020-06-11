@@ -8,6 +8,7 @@
 <style>
 	body{
 	text-align: center;
+	font-size: 24px;
 	}
 </style>
 </head>

@@ -21,7 +21,6 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest arg0, HttpServletResponse arg1,
 			Authentication authentication) throws IOException, ServletException {
-
 		boolean hasUserRole = false;
 		boolean hasAdminRole = false;
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
@@ -40,7 +39,7 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 		} else if (hasAdminRole) {
 			redirectStrategy.sendRedirect(arg0, arg1, "/home");
 		} else {
-			throw new IllegalStateException();
+			redirectStrategy.sendRedirect(arg0, arg1, "/login-error");
 		}
 	}
 	

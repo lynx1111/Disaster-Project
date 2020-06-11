@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
 import com.summit.drproject.service.UserDetailsServiceImpl;
 import com.summit.drproject.service.UserService;
@@ -45,18 +46,23 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	  @Override
 	    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	        auth.authenticationProvider(authenticationProvider());
-	    }
+	  }
 	  
 	  @Override
 	    protected void configure(HttpSecurity http) throws Exception {
 	        http.csrf().disable().authorizeRequests()
+	        .antMatchers("/", "/login", "/register").permitAll()
+	        .antMatchers("/logout").authenticated()
 	        .antMatchers("/user").hasAnyRole("USER")
 			.antMatchers("/admin").hasAnyRole("ADMIN")
 	            .and()
-	            .formLogin().loginPage("/login")
+	            .formLogin().loginPage("/login").permitAll().failureUrl("/login-error")
 				.successHandler(successHandler).permitAll()
 	            .and()
-	            .logout().permitAll()
+	            .logout().logoutUrl("/logout").logoutSuccessUrl("/login")
+	            .invalidateHttpSession(true)        // set invalidation state when logout
+                .deleteCookies("JSESSIONID")
+	            //logoutSuccessHandler(new CustomLogoutSuccessHandler()).permitAll()
 	            .and()
 	            .exceptionHandling().accessDeniedPage("/403")
 	            ;

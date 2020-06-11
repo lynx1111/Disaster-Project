@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -26,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.summit.drproject.entity.Job;
 import com.summit.drproject.entity.Timesheet;
 import com.summit.drproject.exception.ResourceNotFoundException;
-
+import com.summit.drproject.repository.MyUserDetails;
 import com.summit.drproject.service.TimesheetService;
 
 @Controller
@@ -83,6 +84,8 @@ public class TimesheetController {
 	
 	@RequestMapping(value = "/user_home")
 	public String getUserTimesheets(ModelMap model){
+		MyUserDetails user = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	 	model.addAttribute("name", user.getName());
 		model.put("timesheets", timesheetService.getAllTimesheets());
 		return "user_home";
 	}
@@ -92,7 +95,6 @@ public class TimesheetController {
 		model.addAttribute("timesheet", new Timesheet());
 		return "timesheetForm";
 	}
-	
 	@PostMapping(value="/add_ts")
 	public String addTimesheet(Model model,@Validated @ModelAttribute Timesheet timesheet,BindingResult result) {
 		if (result.hasErrors()) {

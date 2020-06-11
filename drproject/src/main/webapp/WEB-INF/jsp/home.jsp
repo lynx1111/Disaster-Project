@@ -8,10 +8,16 @@
 	html, body{
 	height:100%;
 	text-align: center;
+	font-size:30px;
 	}
 	.leftNavbar{
-	float:left;
+	float:center;
 	height:100%;
+	font-size:24px;
+	}
+	table{
+	margin-left:auto; 
+    margin-right:auto;
 	}
 </style>
 
@@ -23,11 +29,12 @@
 <div class="upperHeader">
 	<h2>Disaster Recovery Application: Time card Submission</h2>
 </div>
-<c:if test="${name=='duck'}">
-	You are goose hehe
-</c:if>
 <div>
-	<h2>Hi ${name}</h2>
+	<h2>Hi ${name}(ADMIN)</h2>
+	<form action="/logout">
+		<input type="submit" value="Sign out"/>
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
+	</form>
 </div>
 
 <div class="leftNavbar">
