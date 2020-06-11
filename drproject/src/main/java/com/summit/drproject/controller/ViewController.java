@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.summit.drproject.entity.User;
 import com.summit.drproject.exception.ResourceNotFoundException;
@@ -31,7 +33,11 @@ public class ViewController {
 	}
 	
 	@GetMapping(value="/login")
-	public String showLoginPage(Model model) {
+	public String showLoginPage(@RequestParam(value="logout", required=false) String logout,Model model) {
+		//Because spring creates the parameter error and logout, I can do this :O!
+		if (logout!=null) {
+			model.addAttribute("success", "You have logged out successfully!");
+		}
 		model.addAttribute("user", new User());
 		return "login";
 	}
@@ -58,14 +64,12 @@ public class ViewController {
 	 	return "home";
 	  }
 	 
-	 @RequestMapping(value="/logout")
+	 @PostMapping("/logout")
 	 public String logoutPage(HttpServletRequest request, HttpServletResponse response, Model model) {
-		 System.out.println("Logout method");
 		 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		 if (auth != null) {
 			 new SecurityContextLogoutHandler().logout(request, response, auth);
 		 }
-		 model.addAttribute("success", "You have logged out successfully!");
 		 return "login";
 	 }
 	 

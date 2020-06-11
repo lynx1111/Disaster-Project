@@ -24,7 +24,7 @@
 <body>
 <font class="time" size="30">Timesheet Submission</font>
 <h2>Hi ${name}</h2>
-<form action="/logout">
+<form action="/logout" method="POST">
 	<input type="submit" value="Sign out"/>
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
 </form>

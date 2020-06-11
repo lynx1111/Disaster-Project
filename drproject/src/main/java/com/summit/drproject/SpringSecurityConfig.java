@@ -59,7 +59,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	            .formLogin().loginPage("/login").permitAll().failureUrl("/login-error")
 				.successHandler(successHandler).permitAll()
 	            .and()
-	            .logout().logoutUrl("/logout").logoutSuccessUrl("/login")
+	            .logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout")
 	            .invalidateHttpSession(true)        // set invalidation state when logout
                 .deleteCookies("JSESSIONID")
 	            //logoutSuccessHandler(new CustomLogoutSuccessHandler()).permitAll()
