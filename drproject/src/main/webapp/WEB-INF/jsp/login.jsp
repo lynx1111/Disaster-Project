@@ -12,7 +12,7 @@
 <body>
 	<font color="green">${success}</font>
     <font color="red">${errorMessage}</font>
-    <form:form action="/${user.username}/${user.password}" method="post" modelAttribute="user">
+    <form:form action="/" method="post" modelAttribute="user">
         Username :
 				<form:label path="username"></form:label>
 				<form:input type="text" id="username" path="username"/>
@@ -20,13 +20,9 @@
         		<br>
         Password : 
 				<form:label path="password"></form:label>
-				<form:input type="text" id="password" path="password"/>
+				<form:input type="password" id="password" path="password"/>
 				<form:errors path="password"/>
 				<br>
-		Name:
-				<form:label path="name"></form:label>
-				<form:input type="text" id="name" path="name"/>
-				<form:errors path="name"/>
         <input type="submit" />	  
     </form:form>
 </body>

@@ -23,7 +23,7 @@ public class RegisterController {
 	public String getRegistrationForm(Model model) {
 		Map<String,String> roles=new HashMap<String,String>();
 		roles.put("ADMIN", "Admin");
-		roles.put("OTHER", "Other");
+		roles.put("USER", "Other");
 		model.addAttribute("user", new User());
 		model.addAttribute("roles", roles);
 		return "registerUser";

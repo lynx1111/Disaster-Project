@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,28 +34,34 @@ public class ViewController {
 	
 	@GetMapping(value="/login")
 	public String showLoginPage(Model model) {
+		model.addAttribute("user", new User());
 		return "login";
 	}
-	 @PostMapping(value="/{username}/{password}")
-	 public String showWelcomePage(ModelMap model, @PathVariable String username, @PathVariable String password){
-	        boolean isValidUser = service.validateUser(username, password);
-	        if (!isValidUser) {
-	            model.put("errorMessage", "Invalid Credentials");
-	            return "login";
-	        }
-	        
-	        try {
-				model.put("name", service.getUser(username).getBody().getName());
-			} catch (ResourceNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	        return "home";
+//	 @PostMapping(value="/")
+//	 public String showWelcomePage(ModelMap model, @Validated @ModelAttribute User user){
+//	        boolean isValidUser = service.validateUser(user.getUsername(), user.getPassword());
+//	        if (!isValidUser) {
+//	            model.put("errorMessage", "Invalid Credentials");
+//	            return "login";
+//	        }
+//	        
+//	        try {
+//				model.put("name", service.getUser(user.getUsername()).getBody().getName());
+//			} catch (ResourceNotFoundException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//	        return "home";
+//	 }
+	 @RequestMapping(value = "/home")
+	 public String showHomePage(Model model) {
+	 	
+	 		return "home";
+	  }
+	 
+	 @PostMapping(value="/user_home")
+	 public String showUserPage() {
+		 return "user_home";
 	 }
-	 @RequestMapping(value = "/home", method = RequestMethod.GET)
-		public String showHomePage(Model model) {
-		 	
-		 	return "home";
-		}
 
 }
