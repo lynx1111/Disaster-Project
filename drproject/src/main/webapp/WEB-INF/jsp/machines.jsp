@@ -8,6 +8,7 @@
 <style>
 	html, body{
 	height:100%;
+	text-align:center;
 	}
 	.add{
 	float:center;

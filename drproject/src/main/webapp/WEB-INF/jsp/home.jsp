@@ -7,6 +7,7 @@
 <style>
 	html, body{
 	height:100%;
+	text-align: center;
 	}
 	.leftNavbar{
 	float:left;

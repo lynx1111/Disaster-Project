@@ -5,6 +5,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Welcome</title>
+<style>
+	body{
+	text-align: center;
+	}
+</style>
 </head>
 <body>
 <div class="Welcome">

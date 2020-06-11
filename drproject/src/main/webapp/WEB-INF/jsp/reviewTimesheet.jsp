@@ -8,6 +8,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Reviewing timesheet</title>
+<style>
+	th, td{
+	font-size: 24px
+	}
+	body{
+	text-align: center;
+	}
+</style>
 </head>
 <body>
 <form:form action="/submit_approval/${timesheet.id}" modelAttribute="timesheet" method="post">

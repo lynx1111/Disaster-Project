@@ -80,5 +80,27 @@ public class TimesheetController {
 		}
 		return "timesheets";
 	}
-
+	
+	@RequestMapping(value = "/user_home")
+	public String getUserTimesheets(ModelMap model){
+		model.put("timesheets", timesheetService.getAllTimesheets());
+		return "user_home";
+	}
+	
+	@GetMapping(value="/create_ts")
+	public String createTimesheets(Model model) {
+		model.addAttribute("timesheet", new Timesheet());
+		return "timesheetForm";
+	}
+	
+	@PostMapping(value="/add_ts")
+	public String addTimesheet(Model model,@Validated @ModelAttribute Timesheet timesheet,BindingResult result) {
+		if (result.hasErrors()) {
+			model.addAttribute("timesheet", new Timesheet());
+			return "timesheetForm";
+        }
+		timesheetService.create(timesheet);
+		model.addAttribute("timesheets", timesheetService.getAllTimesheets());
+		return "user_home";
+	}
 }

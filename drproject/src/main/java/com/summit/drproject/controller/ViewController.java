@@ -58,10 +58,4 @@ public class ViewController {
 	 	
 	 		return "home";
 	  }
-	 
-	 @PostMapping(value="/user_home")
-	 public String showUserPage() {
-		 return "user_home";
-	 }
-
 }

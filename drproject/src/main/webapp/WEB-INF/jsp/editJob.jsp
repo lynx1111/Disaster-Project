@@ -8,6 +8,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Job Form</title>
+<style>
+	th, td{
+	font-size: 24px
+	}
+	body{
+	text-align: center;
+	}
+</style>
 </head>
 <body>
 <h1>Job Management</h1>

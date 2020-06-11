@@ -7,12 +7,17 @@
 
 <head>
 <title>Login page</title>
+<style>
+	body{
+	text-align: center;
+	}
+</style>
 </head>
 
 <body>
 	<font color="green">${success}</font>
     <font color="red">${errorMessage}</font>
-    <form:form action="/" method="POST" modelAttribute="user">
+    <form:form action="/login" method="POST" modelAttribute="user">
         Username :
 				<form:label path="username"></form:label>
 				<form:input type="text" id="username" path="username"/>

@@ -8,6 +8,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Registration Page</title>
+<style>
+	td{
+	font-size: 24px
+	}
+	body{
+	text-align: center;
+	}
+</style>
 </head>
 <body>
 <form:form action="/create_user" modelAttribute="user" method="post">

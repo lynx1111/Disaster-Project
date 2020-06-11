@@ -12,6 +12,9 @@
 	th, td{
 	font-size: 24px
 	}
+	body{
+	text-align: center;
+	}
 </style>
 </head>
 <body>
