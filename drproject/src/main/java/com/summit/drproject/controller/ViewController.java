@@ -22,6 +22,7 @@ import com.summit.drproject.exception.ResourceNotFoundException;
 import com.summit.drproject.service.UserService;
 
 @Controller
+@RequestMapping
 public class ViewController {
 	
 	@Autowired
@@ -59,9 +60,9 @@ public class ViewController {
 	 		return "home";
 	  }
 	 
-	 @PostMapping(value="/user_home")
-	 public String showUserPage() {
-		 return "user_home";
+	 @RequestMapping(value="/user_home")
+	 public ModelAndView showUserPage() {
+		 return new ModelAndView ("user_home");
 	 }
 
 }
