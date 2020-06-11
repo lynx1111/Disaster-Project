@@ -8,20 +8,27 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="user")
 public class User {
+	
 	@Id
+	@NotEmpty(message = "can not be null")
 	private String username;
 	
 	@Column(name="name")
+	@NotEmpty(message = "can not be null")
 	private String name;
 	
 	@Column(name="role")
+	@NotEmpty(message = "can not be null")
 	private String role;
 	
 	@Column(name="password")
+	@NotEmpty(message = "can not be null")
 	private String password;
 	
 //	@ManyToOne(targetEntity = Job.class)
