@@ -34,7 +34,7 @@ public class ViewController {
 	
 	@GetMapping(value="/login")
 	public String showLoginPage(@RequestParam(value="logout", required=false) String logout,Model model) {
-		//Because spring creates the parameter error and logout, I can do this :O!
+		//Because spring creates the parameter error and logout
 		if (logout!=null) {
 			model.addAttribute("success", "You have logged out successfully!");
 		}
@@ -73,7 +73,7 @@ public class ViewController {
 		 return "login";
 	 }
 	 
-	 @GetMapping("login-error")
+	 @GetMapping("/login-error")
 	 public String loginError(Model model) {
 		 model.addAttribute("errorMessage", "Invalid Credentials");
 		 model.addAttribute("user", new User());
