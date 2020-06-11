@@ -12,7 +12,7 @@
 <body>
 	<font color="green">${success}</font>
     <font color="red">${errorMessage}</font>
-    <form:form action="/" method="post" modelAttribute="user">
+    <form:form action="/" method="POST" modelAttribute="user">
         Username :
 				<form:label path="username"></form:label>
 				<form:input type="text" id="username" path="username"/>
