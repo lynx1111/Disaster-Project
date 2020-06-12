@@ -19,7 +19,6 @@ import com.summit.drproject.service.UserService;
 
 @RestController
 public class UserController {
-	
 	@Autowired
 	UserService userService;
 	

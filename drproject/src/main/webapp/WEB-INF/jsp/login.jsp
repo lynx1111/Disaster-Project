@@ -3,11 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<<<<<<< HEAD
-=======
 <%@ include file="header.jspf"%>
 <%@ include file="navigation/homena.jspf"%>
->>>>>>> 2ac1101c6967aff6e92c2d1889c07810b025124d
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>

@@ -4,7 +4,6 @@
 <%@ include file="navigation/homena.jspf"%>
 
 <head>
-<<<<<<< HEAD
 <meta charset="ISO-8859-1">
 <title>Welcome</title>
 <style>
@@ -13,14 +12,12 @@
 	font-size: 24px;
 	}
 </style>
-=======
 <meta charset="UTF-8">
  
 <title>welcome</title>
  
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles.css">
  
->>>>>>> 2ac1101c6967aff6e92c2d1889c07810b025124d
 </head>
 
 <div class="container">

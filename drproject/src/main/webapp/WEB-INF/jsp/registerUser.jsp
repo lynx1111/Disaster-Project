@@ -6,11 +6,10 @@
 <%@ include file="header.jspf"%>
 <%@ include file="navigation/homena.jspf"%>
 <!DOCTYPE html>
-<html>
-<head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="fragments/header :: header">
 <meta charset="ISO-8859-1">
 <title>Registration Page</title>
-<<<<<<< HEAD
 <style>
 	td{
 	font-size: 24px
@@ -22,7 +21,6 @@
 	margin-left:auto; 
     margin-right:auto;
 	}
-=======
 <style type="text/css">
 	
 	button {
@@ -51,17 +49,17 @@
 	form div div {
 		display: table-cell;
 	}	
->>>>>>> 2ac1101c6967aff6e92c2d1889c07810b025124d
 </style>
 </head>
 <body>
-<form:form action="/register" modelAttribute="user" method="post">
+
+<form:form action="/register" modelAttribute="ruf" method="post">
 	<table>
 		<tr>
 			<td>Username</td>
 			<td>
 			<form:label path="username"></form:label>
-				<form:input type="text" id="username" path="username"/>
+				<form:input type="text" path="username"/>
 				<form:errors path="username" cssClass="error"/>
 			</td>
 		</tr>
@@ -69,7 +67,7 @@
 			<td>Password</td>
 			<td>
 			<form:label path="password"></form:label>
-				<form:input type="password" id="password" path="password"/>
+				<form:input type="password" path="password"/>
 				<form:errors path="password" cssClass="error"/>
 			</td>
 		</tr>
@@ -77,7 +75,7 @@
 			<td>Full name</td>
 			<td>
 			<form:label path="name"></form:label>
-				<form:input type="text" id="name" path="name"/>
+				<form:input type="text" path="name"/>
 				<form:errors path="name" cssClass="error"/>
 			</td>
 		</tr>
