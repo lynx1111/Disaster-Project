@@ -49,6 +49,10 @@
 	form div div {
 		display: table-cell;
 	}	
+	.pseduoerror{
+		color: red;
+		font-style: italic;
+	}
 </style>
 </head>
 <body>
@@ -56,35 +60,32 @@
 <form:form action="/register" modelAttribute="ruf" method="post">
 	<table>
 		<tr>
-			<td>Username</td>
-			<td>
-			<form:label path="username"></form:label>
-				<form:input type="text" path="username"/>
-				<form:errors path="username" cssClass="error"/>
-			</td>
+			<td>Username:</td>
+				<td><form:label path="username"></form:label></td>
+				<td><form:input type="text" path="username"/></td>
+				<td><form:errors path="username" cssClass="error"/></td>
+				<td class="pseduoerror">${username}</td>
 		</tr>
 		<tr>
-			<td>Password</td>
-			<td>
-			<form:label path="password"></form:label>
-				<form:input type="password" path="password"/>
-				<form:errors path="password" cssClass="error"/>
-			</td>
+			<td>Password:</td>
+			<td><form:label path="password"></form:label></td>
+			<td><form:input type="password" path="password"/></td>
+			<td><form:errors path="password" cssClass="error"/></td>
+			
 		</tr>
 		<tr>
-			<td>Full name</td>
-			<td>
-			<form:label path="name"></form:label>
-				<form:input type="text" path="name"/>
-				<form:errors path="name" cssClass="error"/>
-			</td>
+			<td>Full name:</td>
+				<td><form:label path="name"></form:label></td>
+				<td><form:input type="text" path="name"/></td>
+				<td><form:errors path="name" cssClass="error"/></td>
 		</tr>
 		<tr>
-			<form:select path="role">
-				<form:option value="NONE" label="--- Select ---"/>
-				<form:options items="${roles}"/>
-				<form:errors path="role" cssClass="error"/>
-			</form:select>
+			<td>Roles:</td>
+			<td><form:select path="role">
+			<form:option value="NONE" label="--- Select ---"/>
+			<form:options items="${roles}"/>
+			</form:select></td>
+			<td><form:errors path="role" cssClass="error"/></td>
 		</tr>
 	</table>
 	<input type="submit" value="Save" />

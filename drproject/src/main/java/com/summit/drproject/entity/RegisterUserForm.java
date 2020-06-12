@@ -1,10 +1,11 @@
 package com.summit.drproject.entity;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class RegisterUserForm {
-	@NotNull
+	@NotEmpty(message = "Cannot be Empty")
 	private String role;
 	@NotNull
 	@Size(min=5, max=30)
@@ -12,7 +13,7 @@ public class RegisterUserForm {
 	@NotNull
 	@Size(min=5, max=20)
 	private String password;
-	@NotNull
+	@NotEmpty(message = "Cannot be Empty")
 	private String name;
 	public RegisterUserForm() {
 		super();

@@ -41,29 +41,31 @@ public class RegisterController {
 	
 	@PostMapping("/register")
 	public String createUser(@Valid  @ModelAttribute("ruf") RegisterUserForm ruf, BindingResult bindingResult,Model model) {
-		
-		if (bindingResult.hasErrors()) {
-			System.out.println("here2");
+		User user= null;
+		try {
+			user = userService.getUser(ruf.getUsername()).getBody();
+		} catch (ResourceNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(user!=null) {
+			model.addAttribute("username", "This username exist already. Please choose another one.");
 			Map<String,String> roles=new HashMap<String,String>();
 			roles.put("ADMIN", "Admin");
 			roles.put("USER", "Other");
 			model.addAttribute("roles", roles);
 			return "registerUser";
 		}
-		User user = null;
-		try {
-			user = userService.getUser(ruf.getName()).getBody();
-		} catch (ResourceNotFoundException e) {
+		if (bindingResult.hasErrors()) {
 			Map<String,String> roles=new HashMap<String,String>();
 			roles.put("ADMIN", "Admin");
 			roles.put("USER", "Other");
 			model.addAttribute("roles", roles);
-			model.addAttribute("errorMessage", e.getMessage());
 			return "registerUser";
 		}
 		model.addAttribute("success", "Account has successfully been created. Please login");
-		model.addAttribute("user", user);
-		userService.create(user);
+		model.addAttribute("user", ruf);
+		userService.create(new User(ruf.getUsername(), ruf.getName(), ruf.getRole(), ruf.getPassword(), null));
 		return "login";
 	}
 }
