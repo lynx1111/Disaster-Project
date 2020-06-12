@@ -29,4 +29,5 @@ public class CustomLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler
             response.sendRedirect(request.getContextPath() + "/login?logout=true");
         }
     }
+    //hel
 }
