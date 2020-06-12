@@ -28,6 +28,7 @@
 			Welcome <a href="/login">Click here</a> to login
 			<br>
 			If you are a new user please create a user with: <a href="/register">Register</a>
+			hellpo
 		</div>
 	</div>
 </div>
