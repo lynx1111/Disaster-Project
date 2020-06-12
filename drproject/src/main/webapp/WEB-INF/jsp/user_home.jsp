@@ -3,6 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<<<<<<< HEAD
+=======
+<%@ include file="header.jspf"%>
+<%@ include file="navigation/timesheetna.jspf"%>
+>>>>>>> 2ac1101c6967aff6e92c2d1889c07810b025124d
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,3 +62,4 @@
 </table>
 </body>
 </html>
+<%@ include file="footer.jspf"%>

@@ -27,9 +27,12 @@ public class MyUserDetails implements UserDetails {
 		authorities.add(new SimpleGrantedAuthority(user.getRole()));
 		return authorities;
 	}
+
+	
 	public String getName() {
 		return user.getName();
 	}
+
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub
@@ -65,5 +68,6 @@ public class MyUserDetails implements UserDetails {
 		// TODO Auto-generated method stub
 		return true;
 	}
+
 
 }

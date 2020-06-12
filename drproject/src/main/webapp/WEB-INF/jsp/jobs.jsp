@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>  
+<%@ include file="header.jspf"%>
+<%@ include file="navigation/adminna.jspf"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,3 +57,4 @@
 </form>
 </body>
 </html>
+<%@ include file="footer.jspf"%>
