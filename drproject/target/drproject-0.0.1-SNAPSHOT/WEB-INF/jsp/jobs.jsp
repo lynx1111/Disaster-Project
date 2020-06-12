@@ -2,7 +2,7 @@
  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>  
 <%@ include file="header.jspf"%>
-<%@ include file="navigation/adminna.jspf"%>
+<%@ include file="navigation/timesheetna.jspf"%>
 <!DOCTYPE html>
 <html>
 <head>

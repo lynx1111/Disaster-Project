@@ -3,6 +3,7 @@ C:\Users\tuf85\git\Disaster-Project\drproject\src\main\java\com\summit\drproject
 C:\Users\tuf85\git\Disaster-Project\drproject\src\main\java\com\summit\drproject\controller\MachineController.java
 C:\Users\tuf85\git\Disaster-Project\drproject\src\main\java\com\summit\drproject\service\MachineService.java
 C:\Users\tuf85\git\Disaster-Project\drproject\src\main\java\com\summit\drproject\SpringSecurityConfig.java
+C:\Users\tuf85\git\Disaster-Project\drproject\src\main\java\com\summit\drproject\entity\RegisterUserForm.java
 C:\Users\tuf85\git\Disaster-Project\drproject\src\main\java\com\summit\drproject\repository\TimesheetRepository.java
 C:\Users\tuf85\git\Disaster-Project\drproject\src\main\java\com\summit\drproject\entity\Timesheet.java
 C:\Users\tuf85\git\Disaster-Project\drproject\src\main\java\com\summit\drproject\controller\RegisterController.java
@@ -25,4 +26,5 @@ C:\Users\tuf85\git\Disaster-Project\drproject\src\main\java\com\summit\drproject
 C:\Users\tuf85\git\Disaster-Project\drproject\src\main\java\com\summit\drproject\entity\User.java
 C:\Users\tuf85\git\Disaster-Project\drproject\src\main\java\com\summit\drproject\controller\ViewController.java
 C:\Users\tuf85\git\Disaster-Project\drproject\src\main\java\com\summit\drproject\CustomSuccessHandler.java
+C:\Users\tuf85\git\Disaster-Project\drproject\src\main\java\com\summit\drproject\service\AppUserValidator.java
 C:\Users\tuf85\git\Disaster-Project\drproject\src\main\java\com\summit\drproject\service\UserDetailsServiceImpl.java

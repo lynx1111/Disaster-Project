@@ -5,8 +5,10 @@ com\summit\drproject\service\MachineService.class
 com\summit\drproject\repository\MyUserDetails.class
 com\summit\drproject\controller\UserController.class
 com\summit\drproject\repository\JobRepository.class
+com\summit\drproject\service\AppUserValidator.class
 com\summit\drproject\CustomLogoutSuccessHandler.class
 com\summit\drproject\controller\MachineController.class
+com\summit\drproject\entity\RegisterUserForm.class
 com\summit\drproject\exception\ResourceNotFoundException.class
 com\summit\drproject\repository\MachineRepository.class
 com\summit\drproject\ServletInitializer.class
