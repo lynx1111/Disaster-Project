@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ include file="header.jspf"%>
+<%@ include file="navigation/homena.jspf"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,3 +79,4 @@
 </form:form>
 </body>
 </html>
+<%@ include file="footer.jspf"%>

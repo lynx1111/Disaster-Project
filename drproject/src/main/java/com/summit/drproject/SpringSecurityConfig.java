@@ -50,13 +50,18 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	  @Override
 	    protected void configure(HttpSecurity http) throws Exception {
 	        http.csrf().disable().authorizeRequests()
+	        .antMatchers("/", "/login", "/register").permitAll()
+	        .antMatchers("/logout").authenticated()
 	        .antMatchers("/user").hasAnyRole("USER")
 			.antMatchers("/admin").hasAnyRole("ADMIN")
 	            .and()
-	            .formLogin().loginPage("/login")
+	            .formLogin().loginPage("/login").permitAll().failureUrl("/login-error")
 				.successHandler(successHandler).permitAll()
 	            .and()
-	            .logout().permitAll()
+	            .logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout")
+	            .invalidateHttpSession(true)        // set invalidation state when logout
+                .deleteCookies("JSESSIONID")
+	            //logoutSuccessHandler(new CustomLogoutSuccessHandler()).permitAll()
 	            .and()
 	            .exceptionHandling().accessDeniedPage("/403")
 	            ;

@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
+//import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,8 +39,10 @@ public class RegisterController {
 	@PostMapping("/register")
 	public String createUser(@Valid  @ModelAttribute("user") User user, Model model, BindingResult bindingResult) {
 		
+		System.out.println("here1");
 		
 		if (bindingResult.hasErrors()) {
+			System.out.println("here2");
 			Map<String,String> roles=new HashMap<String,String>();
 			roles.put("ADMIN", "Admin");
 			roles.put("USER", "Other");

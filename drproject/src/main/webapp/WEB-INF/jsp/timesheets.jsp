@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ include file="header.jspf"%>
+<%@ include file="navigation/timesheetna.jspf"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +13,13 @@
 <style>
 	th, td{
 	font-size: 24px
+	}
+	body{
+	text-align: center;
+	}
+	table{
+	margin-left:auto; 
+    margin-right:auto;
 	}
 </style>
 </head>
@@ -45,3 +54,4 @@
 </form>
 </body>
 </html>
+<%@ include file="footer.jspf"%>

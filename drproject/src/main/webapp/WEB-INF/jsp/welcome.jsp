@@ -1,18 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
+<%@ include file="header.jspf"%>
+<%@ include file="navigation/homena.jspf"%>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Welcome</title>
+<meta charset="UTF-8">
+ 
+<title>welcome</title>
+ 
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles.css">
+ 
 </head>
-<body>
-<div class="Welcome">
-	Hi! Welcome to disaster recovery pages.
-	<br>
-	If you are a new user please create a user with: <a href="/register">Register</a>
-	<br>
-	Otherwise please login with: <a href="/login">Login</a>
+
+<div class="container">
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">Home Page</div>
+		<div class="panel-body">
+			Welcome <a href="/login">Click here</a> to login
+			<br>
+			If you are a new user please create a user with: <a href="/register">Register</a>
+		</div>
+	</div>
 </div>
-</body>
-</html>
+
+<%@ include file="footer.jspf"%>

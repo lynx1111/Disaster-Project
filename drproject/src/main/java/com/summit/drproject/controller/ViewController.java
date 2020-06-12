@@ -1,6 +1,12 @@
 package com.summit.drproject.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -19,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.summit.drproject.entity.User;
 import com.summit.drproject.exception.ResourceNotFoundException;
+import com.summit.drproject.repository.MyUserDetails;
 import com.summit.drproject.service.UserService;
 
 @Controller
@@ -34,7 +41,11 @@ public class ViewController {
 	}
 	
 	@GetMapping(value="/login")
-	public String showLoginPage(Model model) {
+	public String showLoginPage(@RequestParam(value="logout", required=false) String logout,Model model) {
+		//Because spring creates the parameter error and logout
+		if (logout!=null) {
+			model.addAttribute("success", "You have logged out successfully!");
+		}
 		model.addAttribute("user", new User());
 		return "login";
 	}
@@ -56,13 +67,24 @@ public class ViewController {
 //	 }
 	 @RequestMapping(value = "/home")
 	 public String showHomePage(Model model) {
-	 	
-	 		return "home";
+		MyUserDetails user = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	 	model.addAttribute("name", user.getName());
+	 	return "home";
 	  }
 	 
-	 @RequestMapping(value="/user_home")
-	 public ModelAndView showUserPage() {
-		 return new ModelAndView ("user_home");
+	 @PostMapping("/logout")
+	 public String logoutPage(HttpServletRequest request, HttpServletResponse response, Model model) {
+		 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		 if (auth != null) {
+			 new SecurityContextLogoutHandler().logout(request, response, auth);
+		 }
+		 return "login";
 	 }
-
+	 
+	 @GetMapping("/login-error")
+	 public String loginError(Model model) {
+		 model.addAttribute("errorMessage", "Invalid Credentials");
+		 model.addAttribute("user", new User());
+		 return "login";
+	 }
 }

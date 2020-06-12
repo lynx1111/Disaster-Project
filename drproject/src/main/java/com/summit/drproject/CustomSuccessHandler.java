@@ -40,7 +40,7 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 		} else if (hasAdminRole) {
 			redirectStrategy.sendRedirect(arg0, arg1, "/home");
 		} else {
-			throw new IllegalStateException();
+			redirectStrategy.sendRedirect(arg0, arg1, "/login-error");
 		}
 	}
 	

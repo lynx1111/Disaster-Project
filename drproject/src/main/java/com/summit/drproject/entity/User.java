@@ -16,19 +16,19 @@ import javax.validation.constraints.NotEmpty;
 public class User {
 	
 	@Id
-	@NotEmpty(message = "can not be null")
+	//@NotEmpty(message = "can not be null")
 	private String username;
 	
 	@Column(name="name")
-	@NotEmpty(message = "can not be null")
+	//@NotEmpty(message = "can not be null")
 	private String name;
 	
 	@Column(name="role")
-	@NotEmpty(message = "can not be null")
+	//@NotEmpty(message = "can not be null")
 	private String role;
 	
 	@Column(name="password")
-	@NotEmpty(message = "can not be null")
+	//@NotEmpty(message = "can not be null")
 	private String password;
 	
 //	@ManyToOne(targetEntity = Job.class)
