@@ -35,14 +35,14 @@ public class JobController {
 	@Autowired
 	JobService jobService;
 	
-	@RequestMapping(value = "/jobs",method = RequestMethod.GET)
+	@RequestMapping(value = "/job/jobs",method = RequestMethod.GET)
 	public String getJobs(ModelMap model){
 		System.out.println("In job controller");
 		List<Job> jobs = jobService.getAllJobs();
 		model.put("jobs", jobs);
 		return "jobs";
 	}
-	@GetMapping("/edit_job/{id}")
+	@GetMapping("/job/edit_job/{id}")
 	public String updateJob(@PathVariable String id , ModelMap model) {
 		Job job = null;
 		try {
@@ -56,7 +56,7 @@ public class JobController {
 		return "editJob";
 	}
 	
-	@PostMapping("/update_job/{id}")
+	@PostMapping("/job/update_job/{id}")
 	public String showUpdateJob(@PathVariable String id, @Validated @ModelAttribute Job job, BindingResult result, Model model  ) {
 		if (result.hasErrors()) {
             return "editJob";
@@ -72,7 +72,7 @@ public class JobController {
 		return "jobs";
 	}
 	
-	@RequestMapping(value="/delete_job", method=RequestMethod.GET)
+	@RequestMapping(value="/job/delete_job", method=RequestMethod.GET)
 	public String deleteJob(@RequestParam(value="id") String id, ModelMap model) {
 		try {
 			jobService.delete(id);
@@ -84,14 +84,14 @@ public class JobController {
 		}
 		return "jobs";
 	}
-	@GetMapping(value="/create")
+	@GetMapping(value="/job/create")
 	public String addJob(Model model) {
 		model.addAttribute("job", new Job());
 		System.out.println("Creating the job v1");
 		return "jobForm";
 	}
 	
-	@PostMapping(value="/add", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	@PostMapping(value="/job/add", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	public String showAddedJob(@Validated @ModelAttribute Job job, BindingResult result, Model model) {
 		System.out.println("Creating the job v24324324");
 		if(result.hasErrors()) {

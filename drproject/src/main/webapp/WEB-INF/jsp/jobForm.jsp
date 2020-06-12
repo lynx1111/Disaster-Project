@@ -25,7 +25,7 @@
 </head>
 <body>
 <h1>Job Management</h1>
-<form:form action="/add" modelAttribute="job" method="post">
+<form:form action="/job/add" modelAttribute="job" method="post">
 	<table>
 		<tr>
 			<th>Job name: </th>

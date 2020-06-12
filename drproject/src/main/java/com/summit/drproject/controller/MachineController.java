@@ -29,7 +29,7 @@ public class MachineController {
 	@Autowired
 	MachineService machineService;
 	
-	@RequestMapping(value = "/machines",method = RequestMethod.GET)
+	@RequestMapping(value = "/machine/machines",method = RequestMethod.GET)
 	public String getMachines(ModelMap model){
 		System.out.println("In machine controller");
 		List<Machine> machines = machineService.getAllMachines();
@@ -37,7 +37,7 @@ public class MachineController {
 		return "machines";
 	}
 	
-	@GetMapping("/edit_machine/{id}")
+	@GetMapping("/machine/edit_machine/{id}")
 	public String updateMachine(@PathVariable String id , ModelMap model) {
 		Machine machine = null;
 		try {
@@ -51,7 +51,7 @@ public class MachineController {
 		return "editMachine";
 	}
 	
-	@PostMapping("/update_machine/{id}")
+	@PostMapping("/machine/update_machine/{id}")
 	public String showUpdateMachine(@PathVariable String id, @Validated @ModelAttribute Machine machine, BindingResult result, Model model ) {
 		System.out.println("update_job");
 		if (result.hasErrors()) {
@@ -68,7 +68,7 @@ public class MachineController {
 		return "machines";
 	}
 	
-	@RequestMapping(value="/delete_machine", method=RequestMethod.GET)
+	@RequestMapping(value="/machine/delete_machine", method=RequestMethod.GET)
 	public String deleteMachine(@RequestParam(value="id") String id, ModelMap model) {
 		try {
 			machineService.delete(id);
@@ -79,13 +79,13 @@ public class MachineController {
 		}
 		return "machines";
 	}
-	@GetMapping(value="/create_machine")
+	@GetMapping(value="/machine/create_machine")
 	public String addMachine(Model model) {
 		model.addAttribute("machine", new Machine());
 		return "machineForm";
 	}
 	
-	@PostMapping(value="/add_machine", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	@PostMapping(value="/machine/add_machine", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	public String showAddedMachine(@Validated @ModelAttribute Machine machine, BindingResult result, Model model) {
 		if(result.hasErrors()) {
 			return "machineForm";

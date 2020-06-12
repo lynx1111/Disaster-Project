@@ -44,8 +44,8 @@
 	<tr>
 		<td>
 			<ul>
-				<li><a href="/jobs">Job code Management</a></li>
-				<li><a href="/machines">Machine Management</a></li>
+				<li><a href="/job/jobs">Job code Management</a></li>
+				<li><a href="/machine/machines">Machine Management</a></li>
 				<li><a href="/timesheets">Timecard Approval</a></li>
 			</ul>
 		</td>

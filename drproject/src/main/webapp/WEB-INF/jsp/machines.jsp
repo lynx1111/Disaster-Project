@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="header.jspf"%>
-<%@ include file="navigation/adminna.jspf"%>
+<%@ include file="navigation/timesheetna.jspf"%>
     
 <!DOCTYPE html>
 <html>
@@ -31,7 +31,7 @@
 <br>
 <br>
 <div class="add">
-	<a href="/create_machine">Add new machine</a>
+	<a href="/machine/create_machine">Add new machine</a>
 </div>
 <br>
 <br>
@@ -48,8 +48,8 @@
 			<td>${machine.description}</td>
 			<td>${machine.hourlyrate}</td>
 			<td>${machine.maxhourperday}</td>
-			<td><a href="/edit_machine/${machine.id}">Edit</a></td>
-			<td><a href="/delete_machine?id=<c:out value='${machine.id}'/>">Delete</a></td>
+			<td><a href="/machine/edit_machine/${machine.id}">Edit</a></td>
+			<td><a href="/machine/delete_machine?id=<c:out value='${machine.id}'/>">Delete</a></td>
 		</tr>
 	</c:forEach>
 </table>

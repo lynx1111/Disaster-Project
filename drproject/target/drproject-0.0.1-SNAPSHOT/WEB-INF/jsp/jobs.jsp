@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>  
+<%@ include file="header.jspf"%>
+<%@ include file="navigation/adminna.jspf"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,22 +11,31 @@
 <style>
 	html, body{
 	height:100%;
+	text-align: center;
 	}
 	.add{
-	float:left;
+	float:center;
+	font-size: 24px;
+	}
+	th, td{
+	font-size: 24px;
+	}
+	table{
+	margin-left:auto; 
+    margin-right:auto;
 	}
 </style>
 </head>
 <body>
 
-<h2>List of Jobs:</h2>
+<font size="30">List of Jobs:</font>
 <br>
 <div class="add">
-	<a href="/add">Add new job</a>
+	<a href="/job/create">Add new job</a>
 </div>
 <br>
 <table>
-	<tr>
+	<tr bgcolor="black" style="color:white">
 		<th>Job code</th>
 		<th>Description</th>
 		<th>Hourly Rate</th>
@@ -36,8 +47,8 @@
 			<td>${job.description}</td>
 			<td>${job.hourlyrate}</td>
 			<td>${job.maxhourperday}</td>
-			<td><a href="/update_job?id=<c:out value='${job.id}'/>">Edit</a></td>
-			<td><a href="/delete_job?id=<c:out value='${job.id}'/>">Delete</a></td>
+			<td><a href="/job/edit_job/${job.id}">Edit</a></td>
+			<td><a href="/job/delete_job?id=<c:out value='${job.id}'/>">Delete</a></td>
 		</tr>
 	</c:forEach>
 </table>
@@ -46,3 +57,4 @@
 </form>
 </body>
 </html>
+<%@ include file="footer.jspf"%>
