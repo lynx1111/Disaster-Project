@@ -36,12 +36,13 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 		}
 
 		if (hasUserRole) {
-			redirectStrategy.sendRedirect(arg0, arg1, "/user_home");
+			redirectStrategy.sendRedirect(arg0, arg1, "userDashboard");
 		} else if (hasAdminRole) {
-			redirectStrategy.sendRedirect(arg0, arg1, "/home");
+			redirectStrategy.sendRedirect(arg0, arg1, "/adminDashboard");
 		} else {
-			redirectStrategy.sendRedirect(arg0, arg1, "/login-error");
+			throw new IllegalStateException();
 		}
 	}
+	
 	
 }

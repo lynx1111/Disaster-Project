@@ -25,7 +25,7 @@
 </head>
 <body>
 <h1>Machine Management</h1>
-<form:form action="/update_machine/${machine.id}" modelAttribute="machine" method="post">
+<form:form action="/machine/update_machine/${machine.id}" modelAttribute="machine" method="post">
 	<table>
 		<tr>
 			<th>Machine code: </th>
@@ -65,7 +65,7 @@
 		</tr>
 	</table>
 	</form:form>
-<form action="/machines">
+<form action="/machine/machines">
 	<input type="submit" value="Go back to Machines"/>
 </form>
 

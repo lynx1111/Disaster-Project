@@ -25,7 +25,7 @@
 </head>
 <body>
 <h1>Job Management</h1>
-<form:form action="/update_job/${job.id}" modelAttribute="job" method="post">
+<form:form action="/job/update_job/${job.id}" modelAttribute="job" method="post">
 	<table>
 		<tr>
 			<th>Job name: </th>
@@ -65,7 +65,7 @@
 		</tr>
 	</table>
 	</form:form>
-<form action="/jobs">
+<form action="/job/jobs">
 	<input type="submit" value="Go back to Jobs"/>
 </form>
 
